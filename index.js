@@ -62,56 +62,91 @@ var playerLostLvlThree = false;
 
 // initializing questions
 // TODO : Move the quesitons to separate file and then import
-// levelOne Question Bank
+// levelOne Question Bank - Javascript
+// questions taken from the following sources:
+// https://www.geeksforgeeks.org/javascript-quiz-set-1/
+// https://www.geeksforgeeks.org/javascript-quiz-set-2/
 var lvlOneQB = [
   {
-    question: `Q1 here???`,
-    options: ["opA", "opB", "opCXXX", "opD"],
-    answerPosition: 2,
-  },
-  {
-    question: `Q2 here???`,
-    options: ["opA", "opB", "opC", "opDXXX"],
+    question: `Which of the following is the correct syntax to display “NeoG” in an alert box using JavaScript?`,
+    options: ["alertbox(NeoG);", "msg(NeoG);", "msgbox(NeoG);", "alert(NeoG);"],
     answerPosition: 3,
   },
   {
-    question: `Q3 here???`,
-    options: ["opAXXX", "opB", "opC", "opD"],
-    answerPosition: 0,
-  },
-  {
-    question: `Q4 here???`,
-    options: ["opA", "opB", "opCXXX", "opD"],
+    question: `Predict the output of the following JavaScript code.
+
+  <script type="text/javascript">
+  a = 8 + "8";
+  document.write(a);
+  </script>
+    `,
+    options: ["16", "Compilation Error", "88", "Run Time Error"],
     answerPosition: 2,
   },
   {
-    question: `Q5 here???`,
-    options: ["opA", "opB", "opC", "opDXXX"],
-    answerPosition: 3,
-  },
-  {
-    question: `Q6 here???`,
-    options: ["opA", "opB", "opCXXX", "opD"],
+    question: `Which of the following is not a reserved word in JavaScript?`,
+    options: ["interface", "throws", "program", "short"],
     answerPosition: 2,
   },
   {
-    question: `Q7 here???`,
-    options: ["opA", "opB", "opC", "opDXXX"],
-    answerPosition: 3,
+    question: `What is the syntax for creating a function in JavaScript named as 'neoG'?`,
+    options: [
+      "function = neoG()",
+      "function neoG()",
+      "function := neoG()",
+      "function : neoG()",
+    ],
+    answerPosition: 1,
   },
   {
-    question: `Q8 here???`,
-    options: ["opA", "opB", "opCXXX", "opD"],
+    question: `How is a function named 'neoG' called in JavaScript?`,
+    options: [
+      "call neoG();",
+      "call function neoG();",
+      "neoG();",
+      "function neoG();",
+    ],
     answerPosition: 2,
   },
   {
-    question: `Q9 here???`,
-    options: ["opA", "opB", "opC", "opDXXX"],
-    answerPosition: 3,
+    question: `How to write an ‘if’ statement for executing some code.
+    If “i” is NOT equal to 5?`,
+    options: ["if(i<>5) ", "if i<>5", "if(i!=5)", "if i!=5"],
+    answerPosition: 2,
   },
   {
-    question: `Q10 here???`,
-    options: ["opA", "opB", "opCXXX", "opD"],
+    question: `What is the correct syntax for adding comments in JavaScript?`,
+    options: [
+      "<!–This is a comment–>",
+      "//This is a comment",
+      "–This is a comment",
+      "**This is a comment**",
+    ],
+    answerPosition: 1,
+  },
+  {
+    question: `What is the JavaScript syntax for printing values in Console?`,
+    options: [
+      "print(5)",
+      "console.log(5);",
+      "console.print(5);",
+      "print.console(5);",
+    ],
+    answerPosition: 1,
+  },
+  {
+    question: `What will be the output of: 'typeof(24.49)'?`,
+    options: ["float", "number", "integer", "double"],
+    answerPosition: 1,
+  },
+  {
+    question: `How will you find the length of the string 'neoG Camp'?`,
+    options: [
+      "'neoG Camp'.len",
+      "sizeof('neoG Camp')",
+      "'neoG Camp'.length",
+      "lenOf('neoG Camp')",
+    ],
     answerPosition: 2,
   },
 ];
