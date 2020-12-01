@@ -24,6 +24,7 @@
 // initializing external libraries
 var readlineSync = require("readline-sync");
 const chalk = require("chalk");
+const { rgb } = require("chalk");
 
 // initializing a color scheme with chalk
 const highlight = chalk.bold.red.bgWhite;
@@ -259,7 +260,7 @@ function askQuestion(questionObj, levelPoint) {
       setFailLvl(levelPoint);
     } else {
       console.log(
-        chalk.bgYellow(
+        chalk.yellow(
           "Skipped: " + skippedQuestions + " Remaining: " + remaining
         )
       );
@@ -413,6 +414,40 @@ function printEndScore() {
 
   console.log("\nWish you the best!");
 }
+
+// prints each question header with a different background
+function questionHeader(level, queIndex, flipState) {
+  // saving chalk background variables
+  var rBG = chalk.black.bgRedBright;
+  var gBG = chalk.black.bgGreenBright;
+  var bBG = chalk.black.bgBlueBright;
+  var mBG = chalk.black.bgMagentaBright;
+  var cBG = chalk.black.bgCyanBright;
+
+  // set heading string
+  var heading = `\n   ---=== LEVEL ${level} QUESTION ${
+    queIndex + 1
+  } ===---   \n`;
+
+  // change background based on state variable
+  switch (flipState) {
+    case 0:
+      console.log(rBG(heading));
+      break;
+    case 1:
+      console.log(gBG(heading));
+      break;
+    case 2:
+      console.log(bBG(heading));
+      break;
+    case 3:
+      console.log(mBG(heading));
+      break;
+    case 4:
+      console.log(cBG(heading));
+      break;
+  }
+}
 // END - initializing helper functions
 
 // BEGIN QUIZ
@@ -435,9 +470,12 @@ if (
   // 'Y' key was pressed.
   console.log(highlight("\n ---=== RULES ===--- \n"));
   var rules = `
-	1. Rule 1
-	2. Rule 2
-  3. Rule 3
+  * The Quiz has three levels: JS, HTML and CSS
+  * Get 1 point, 2 points and 3 points for lvl 1, 2 and 3 respectively
+  * Get 0 points for skipping question
+  * Get 3 correct out 5 correct to proceed next level
+  * Fail max 2 questions per level
+  * Fail max 5 questions in whole game
   `;
   console.log(rules);
 } else {
@@ -485,8 +523,7 @@ function playLvlOneQuiz() {
 	1. Max 2 wrong answers per level
 	2. +1 point for correct answer
 	3. -1 point for wrong answer
-	4. 0 points for skipping questions
-	5. 3 maximum skips in whole game`);
+	`);
 
   pause();
 
@@ -497,13 +534,23 @@ function playLvlOneQuiz() {
   // if the user chooses to play again they might be shown a few different questions
   lvlOneQB = shuffleArray(lvlOneQB);
 
+  // change background of question heading when question changes
+  var flipState = 1;
+
   for (var i = 0; i < 5; i++) {
     if (playerLostGame) {
       printEndScore();
       break;
     }
 
+    console.clear();
+
+    questionHeader(1, i, flipState);
     askQuestion(lvlOneQB[i], 1);
+
+    // update flipState to change background in next iteration
+    ++flipState;
+    if (flipState == 4) flipState = 0;
   }
 
   if (playerLostGame == false) {
@@ -529,8 +576,7 @@ function playLvlTwoQuiz() {
 	1. Max 2 wrong answers per level
 	2. +2 point for correct answer
 	3. -1 point for wrong answer
-	4. 0 points for skipping questions
-	5. 3 maximum skips in whole game`);
+	`);
 
   pause();
 
@@ -541,13 +587,23 @@ function playLvlTwoQuiz() {
   // if the user chooses to play again they might be shown a few different questions
   lvlTwoQB = shuffleArray(lvlTwoQB);
 
+  // change background of question heading when question changes
+  var flipState = 1;
+
   for (var i = 0; i < 5; i++) {
     if (playerLostGame) {
       printEndScore();
       break;
     }
 
+    console.clear();
+
+    questionHeader(2, i, flipState);
     askQuestion(lvlTwoQB[i], 2);
+
+    // update flipState to change background in next iteration
+    ++flipState;
+    if (flipState == 4) flipState = 0;
   }
 
   if (playerLostGame == false) {
@@ -573,8 +629,7 @@ function playLvlThreeQuiz() {
 	1. Max 2 wrong answers per level
 	2. +3 point for correct answer
 	3. -1 point for wrong answer
-	4. 0 points for skipping questions
-	5. 3 maximum skips in whole game`);
+	`);
 
   pause();
 
@@ -585,13 +640,23 @@ function playLvlThreeQuiz() {
   // if the user chooses to play again they might be shown a few different questions
   lvlThreeQB = shuffleArray(lvlThreeQB);
 
+  // change background of question heading when question changes
+  var flipState = 1;
+
   for (var i = 0; i < 5; i++) {
     if (playerLostGame) {
       printEndScore();
       break;
     }
 
+    console.clear();
+
+    questionHeader(3, i, flipState);
     askQuestion(lvlThreeQB[i], 3);
+
+    // update flipState to change background in next iteration
+    ++flipState;
+    if (flipState == 4) flipState = 0;
   }
 
   if (playerLostGame == false) {
