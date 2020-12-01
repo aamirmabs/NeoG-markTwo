@@ -286,6 +286,30 @@ function askQuestion(questionObj, levelPoint) {
     }
   }
 }
+
+function shuffleArray(array) {
+  // using Math.random() will pick duplicate index values
+  // so the same quesitons might get displayed
+  // We will randomize the questions array using Fisher-Yates (aka Knuth) Shuffle
+  // read about it here: https://bost.ocks.org/mike/shuffle/
+
+  var m = array.length,
+    t,
+    i;
+
+  // While there remain elements to shuffle…
+  while (m) {
+    // Pick a remaining element…
+    i = Math.floor(Math.random() * m--);
+
+    // And swap it with the current element.
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+  }
+
+  return array;
+}
 // END initializing core functions
 
 // START - initializing helper functions
@@ -374,7 +398,7 @@ function printEndScore() {
     }
   }
 
-  console.log("Previous High Score was " + highestScore);
+  console.log("\n   ---=====---\nPrevious High Score was " + highestScore);
 
   if (beatHighScore) {
     console.log(
@@ -416,8 +440,6 @@ if (
   3. Rule 3
   `;
   console.log(rules);
-
-  // Do something...
 } else {
   // Another key was pressed.
   console.log("\nAlright hotshot, lets go...");
@@ -471,6 +493,10 @@ function playLvlOneQuiz() {
   // reset counters
   currentLvlWrongAnswers = 0;
 
+  // before we begin asking questions we will shuffle the question set
+  // if the user chooses to play again they might be shown a few different questions
+  lvlOneQB = shuffleArray(lvlOneQB);
+
   for (var i = 0; i < 5; i++) {
     if (playerLostGame) {
       printEndScore();
@@ -511,6 +537,10 @@ function playLvlTwoQuiz() {
   // reset counters
   currentLvlWrongAnswers = 0;
 
+  // before we begin asking questions we will shuffle the question set
+  // if the user chooses to play again they might be shown a few different questions
+  lvlTwoQB = shuffleArray(lvlTwoQB);
+
   for (var i = 0; i < 5; i++) {
     if (playerLostGame) {
       printEndScore();
@@ -550,6 +580,10 @@ function playLvlThreeQuiz() {
 
   // reset counters
   currentLvlWrongAnswers = 0;
+
+  // before we begin asking questions we will shuffle the question set
+  // if the user chooses to play again they might be shown a few different questions
+  lvlThreeQB = shuffleArray(lvlThreeQB);
 
   for (var i = 0; i < 5; i++) {
     if (playerLostGame) {
