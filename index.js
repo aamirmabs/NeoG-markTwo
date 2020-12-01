@@ -151,111 +151,166 @@ var lvlOneQB = [
   },
 ];
 
-// levelTwo Question Bank
+// levelTwo Question Bank - HTML
+// Questions taken from:
+// https://www.geeksforgeeks.org/html-course-practice-quiz-1/
 var lvlTwoQB = [
   {
-    question: `Q1 here???`,
-    options: ["opA", "opB", "opCXXX", "opD"],
-    answerPosition: 2,
-  },
-  {
-    question: `Q2 here???`,
-    options: ["opA", "opB", "opC", "opDXXX"],
+    question: `What does HTML stands for? `,
+    options: [
+      "Hypertext Machine language",
+      "Hypertext and links markup language",
+      "Hightext machine language",
+      "Hypertext Markup Language",
+    ],
     answerPosition: 3,
   },
   {
-    question: `Q3 here???`,
-    options: ["opAXXX", "opB", "opC", "opD"],
+    question: `How is document type initialized in HTML5?`,
+    options: [
+      "</DOCTYPE HTML>",
+      "</DOCTYPE>",
+      "<!DOCTYPE HTML>",
+      "</DOCTYPE html>",
+    ],
+    answerPosition: 2,
+  },
+  {
+    question: `Which of the following HTML Elements is used for making any text bold?`,
+    options: ["<p>", "<i>", "<li>", "<b>"],
+    answerPosition: 3,
+  },
+  {
+    question: `Which of the following HTML element is used for creating an unordered list?`,
+    options: [
+      "<ul>...</ul>",
+      "<ulist>...</ulist>",
+      "<i>...</i>",
+      "<em>...</em>",
+    ],
     answerPosition: 0,
   },
   {
-    question: `Q4 here???`,
-    options: ["opA", "opB", "opCXXX", "opD"],
+    question: `Which of the following characters indicate closing of a tag?`,
+    options: [".", "/", "\\", "|"],
+    answerPosition: 1,
+  },
+  {
+    question: `What is the font-size of the h1 heading tag?`,
+    options: ["3.5em", "2.17em", "2em", "1.5em"],
     answerPosition: 2,
   },
   {
-    question: `Q5 here???`,
-    options: ["opA", "opB", "opC", "opDXXX"],
+    question: ``,
+    options: ["", "", "", ""],
     answerPosition: 3,
   },
   {
-    question: `Q6 here???`,
-    options: ["opA", "opB", "opCXXX", "opD"],
+    question: `How many heading tags are there in HTML5?`,
+    options: ["2", "4", "6", "8"],
     answerPosition: 2,
   },
   {
-    question: `Q7 here???`,
-    options: ["opA", "opB", "opC", "opDXXX"],
-    answerPosition: 3,
-  },
-  {
-    question: `Q8 here???`,
-    options: ["opA", "opB", "opCXXX", "opD"],
+    question: `Which of the following attributes is used to add link to any element?`,
+    options: ["link", "ref", "href", "newref"],
     answerPosition: 2,
   },
   {
-    question: `Q9 here???`,
-    options: ["opA", "opB", "opC", "opDXXX"],
-    answerPosition: 3,
-  },
-  {
-    question: `Q10 here???`,
-    options: ["opA", "opB", "opCXXX", "opD"],
-    answerPosition: 2,
+    question: `Which of the following is the correct way of creating an hyperlink in HTML?`,
+    options: [
+      "<a>https://neog.camp/ <neoG Camp /a>",
+      "<a href= “https://neog.camp/”>neoG Camp</a>",
+      "<a href=“https://neog.camp/” neoG Camp /a> ",
+      "<a link=“https://neog.camp/” neoG Camp> </a>",
+    ],
+    answerPosition: 1,
   },
 ];
 
-// levelThree Question Bank
+// levelThree Question Bank - CSS
+// Sources:
+// https://www.wscubetech.com/quiz-test-css
+// https://www.tutorialspoint.com/css/css_online_quiz.htm
 var lvlThreeQB = [
   {
-    question: `Q1 here???`,
-    options: ["opA", "opB", "opCXXX", "opD"],
-    answerPosition: 2,
-  },
-  {
-    question: `Q2 here???`,
-    options: ["opA", "opB", "opC", "opDXXX"],
+    question: `Which of the following is a component of CSS style rule?`,
+    options: ["selector", "property", "value", "All of the above"],
     answerPosition: 3,
   },
   {
-    question: `Q3 here???`,
-    options: ["opAXXX", "opB", "opC", "opD"],
+    question: `How can you created rounded corners using CSS3?`,
+    options: [
+      "border[round]: 30px; ",
+      "corner-effect: round; ",
+      "border-radius: 30px; ",
+      "alpha-effect: round-corner; ",
+    ],
+    answerPosition: 2,
+  },
+  {
+    question: `How to resize a background image using CSS3? `,
+    options: [
+      "background-size: 80px 60px; ",
+      "bg-dimensions: 80px 60px; ",
+      "background-proportion: 80px 60px; ",
+      "alpha-effect: bg-resize 80px 60px; ",
+    ],
     answerPosition: 0,
   },
   {
-    question: `Q4 here???`,
-    options: ["opA", "opB", "opCXXX", "opD"],
+    question: `How to add text shadow using CSS3? `,
+    options: [
+      "font: shadowed 5px 5px 5px grey; ",
+      "font-shadow: 5px 5px 5px grey; ",
+      "text-shadow: 5px 5px 5px grey; ",
+      "shadow: text 5px 5px 5px grey; ",
+    ],
     answerPosition: 2,
   },
   {
-    question: `Q5 here???`,
-    options: ["opA", "opB", "opC", "opDXXX"],
+    question: `Which of the following property is used to set the background image of an element?`,
+    options: [
+      "background-color",
+      "background-image",
+      "background-repeat",
+      "background-position",
+    ],
+    answerPosition: 0,
+  },
+  {
+    question: `Which of the following property is used to increase or decrease how bold or light a font appears?`,
+    options: ["font-family", "font-style", "font-variant", "font-weight"],
     answerPosition: 3,
   },
   {
-    question: `Q6 here???`,
-    options: ["opA", "opB", "opCXXX", "opD"],
+    question: `Which of the following property is used to set the width of an image?`,
+    options: ["border", "height", "width", "-moz-opacity"],
     answerPosition: 2,
   },
   {
-    question: `Q7 here???`,
-    options: ["opA", "opB", "opC", "opDXXX"],
+    question: `Which of the following property specifies the right padding of an element?`,
+    options: ["padding-right", "padding-r", "right-padding", "rt-padding"],
+    answerPosition: 0,
+  },
+  {
+    question: `How to rotate objects using CSS3? `,
+    options: [
+      "object-rotation: 30deg; ",
+      "transform: rotate(30deg); ",
+      "rotate-object: 30deg; ",
+      "transform: rotate-30deg-clockwise; ",
+    ],
     answerPosition: 3,
   },
   {
-    question: `Q8 here???`,
-    options: ["opA", "opB", "opCXXX", "opD"],
-    answerPosition: 2,
-  },
-  {
-    question: `Q9 here???`,
-    options: ["opA", "opB", "opC", "opDXXX"],
-    answerPosition: 3,
-  },
-  {
-    question: `Q10 here???`,
-    options: ["opA", "opB", "opCXXX", "opD"],
-    answerPosition: 2,
+    question: `What does RGBa mean? `,
+    options: [
+      "Red Green Blue alpha ",
+      "Red Gray Brown alpha ",
+      "Red Gold Black alpha ",
+      "Review Get assistance Back-up your information Acquire proof ",
+    ],
+    answerPosition: 0,
   },
 ];
 
