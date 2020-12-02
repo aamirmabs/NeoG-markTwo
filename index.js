@@ -1,5 +1,7 @@
 // neoG markTwo ASSIGNMENT
 
+// detailed documentation at https://github.com/aamyear/NeoG-markTwo/blob/main/README.md
+
 // OBJECTIVES - Done
 // create a quiz app about something famous and generic which anyone can play
 // Keep the features same and it would be good enough for levelOne qualifier.
@@ -12,7 +14,7 @@
 // Ask for simple YES/NO or do multi options
 
 // 2. Use chalk - Done
-// Use CHELK it in your current app
+// Use CHALK it in your current app
 
 // 3. User high score - Done
 // You have a data structure created in ex15 which shows high score by players to the current user. Write a piece of function which will check this high score data structure and see if current user's score is a high score or not. if current user has made a high score then congratulate him/her and ask them to send screenshot so that you can update the high score data structure.
