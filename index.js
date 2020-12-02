@@ -24,11 +24,9 @@
 // initializing external libraries
 var readlineSync = require("readline-sync");
 const chalk = require("chalk");
-const { rgb } = require("chalk");
 
 // initializing a color scheme with chalk
 const highlight = chalk.bold.red.bgWhite;
-const warning = chalk.keyword("orange");
 
 // START initializing constants and variables
 const scoreboard = [
@@ -315,6 +313,53 @@ var lvlThreeQB = [
 ];
 
 // START initializing core functions
+// Global Quiz Parameters
+var noOfQuePerLvl = 5;
+var maxWrongAnswersPerLvl = 3;
+var maxSkipsPerLvl = 2;
+var maxSkipsPerSession = 5;
+var totalQuizLevels = 3;
+
+// function to set Global Quiz Parameters
+function setQuizParameters() {
+  // using askAgain(question, min, max, defaultValue)
+  var customNoOfQuePerLvl = askAgain(
+    "How many quesitons per level? (min:3 max:10 default:5)",
+    3,
+    10,
+    5
+  );
+
+  var customMaxWrongAnswersPerLvl = askAgain(
+    `How many wrong answers are allowed per level before player fails level? (min:1 max:${customNoOfQuePerLvl} default:3)`,
+    1,
+    customNoOfQuePerLvl,
+    3
+  );
+
+  var customMaxSkipsPerLvl = askAgain(
+    `How many questions can be skipped per level? (min:1 max:${customNoOfQuePerLvl} default:2)`,
+    1,
+    customNoOfQuePerLvl,
+    2
+  );
+
+  var customMaxSkipsPerSession = askAgain(
+    `Maximum questions can be skipped per game? (min:1 max:${
+      customNoOfQuePerLvl * totalQuizLevels
+    } default:5)`,
+    1,
+    customNoOfQuePerLvl * totalQuizLevels,
+    2
+  );
+
+  // setting custom values to global values
+  noOfQuePerLvl = customNoOfQuePerLvl;
+  maxWrongAnswersPerLvl = customMaxWrongAnswersPerLvl;
+  maxSkipsPerLvl = customMaxSkipsPerLvl;
+  maxSkipsPerSession = customMaxSkipsPerSession;
+}
+
 // set flag on which level the player lost
 function setFailLvl(levelNumber) {
   if (levelNumber == 1) playerLostLvlOne = true;
@@ -404,6 +449,17 @@ function shuffleArray(array) {
 // END initializing core functions
 
 // START - initializing helper functions
+function askAgain(question, min, max, defaultValue) {
+  var num = readlineSync.questionInt(question, { defaultInput: defaultValue });
+
+  while (num < min || num > max) {
+    console.log("\nThat is not a valid input. Try again. please! \n");
+    num = readlineSync.questionInt(question, { defaultInput: defaultValue });
+  }
+
+  return num;
+}
+
 function pause() {
   // using readlineSync as a workaround to pause execution till enter is pressed
   readlineSync.question("\nPress Enter to proceed...", {
@@ -540,12 +596,30 @@ function questionHeader(level, queIndex, flipState) {
 }
 // END - initializing helper functions
 
-// BEGIN QUIZ
+// ********************************
+// ********** BEGIN QUIZ **********
+// ********************************
+
 // get user name
 var userName = readlineSync.question("What is your name?\n");
 console.log(
   "\nWell, Hello there " + userName + "! Welcome to the NoeG Quiz. :-)"
 );
+
+pause();
+
+// ask user if they want to customize the quiz
+if (
+  readlineSync.keyInYN(
+    "\nWould you like to " + chalk.red("customize") + " the quiz?"
+  )
+) {
+  // 'Y' key was pressed.
+  setQuizParameters();
+} else {
+  // Another key was pressed.
+  console.log("\nCool, we will play this session with the default settings...");
+}
 
 pause();
 
@@ -563,9 +637,10 @@ if (
   * The Quiz has three levels: JS, HTML and CSS
   * Get 1 point, 2 points and 3 points for lvl 1, 2 and 3 respectively
   * Get 0 points for skipping question
-  * Get 3 correct out 5 correct to proceed next level
-  * Fail max 2 questions per level
-  * Fail max 5 questions in whole game
+  * Total ${noOfQuePerLvl} questions per level
+  * Max ${maxWrongAnswersPerLvl} wrong answers per level
+  * Fail max ${maxSkipsPerLvl} questions per level
+  * Fail max ${maxSkipsPerSession} questions in whole game
   `;
   console.log(rules);
 } else {
@@ -610,7 +685,7 @@ function playLvlOneQuiz() {
   pause();
 
   console.log(`\nJust a reminder before we begin:
-	1. Max 2 wrong answers per level
+	1. Max ${maxWrongAnswersPerLvl} wrong answers per level
 	2. +1 point for correct answer
 	3. -1 point for wrong answer
 	`);
@@ -663,7 +738,7 @@ function playLvlTwoQuiz() {
   pause();
 
   console.log(`\nJust a reminder before we begin:
-	1. Max 2 wrong answers per level
+	1. Max ${maxWrongAnswersPerLvl} wrong answers per level
 	2. +2 point for correct answer
 	3. -1 point for wrong answer
 	`);
@@ -716,7 +791,7 @@ function playLvlThreeQuiz() {
   pause();
 
   console.log(`\nJust a reminder before we begin:
-	1. Max 2 wrong answers per level
+	1. Max ${maxWrongAnswersPerLvl} wrong answers per level
 	2. +3 point for correct answer
 	3. -1 point for wrong answer
 	`);
