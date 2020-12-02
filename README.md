@@ -97,6 +97,12 @@ The user types in the character of the option (such as `c`) and the returned val
 
 ## Workflow
 
+The flow of control is illustrated in the flow chart below:
+
+<p align="center">
+  <img alt="Workflow SVG Image" src="./workflow.svg">
+</p>
+
 ## **Credits**
 
 1. The questions populated in the question banks have been taken from the following sources:
